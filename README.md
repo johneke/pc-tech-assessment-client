@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
 
 ## Required Tools
+
+* Git
 * [Angular CLI](https://github.com/angular/angular-cli) (follow link for how to install angular cli (`ng`))
 
 ## Steps To Build
