@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ev-paged-data-control',
@@ -12,10 +12,14 @@ export class EvPagedDataControlComponent implements OnInit {
   @Input() page: number;
   @Input() limit: number;
   @Input() totalPages: number;
-  collectionSize: number;
+
+  @Output() pageChange: EventEmitter<number> = new EventEmitter();
+
+  pageChanged(event: number) {
+    this.pageChange.emit(event);
+  }
 
   ngOnInit() {
-  	this.collectionSize = this.limit * this.totalPages;
   }
 
 }

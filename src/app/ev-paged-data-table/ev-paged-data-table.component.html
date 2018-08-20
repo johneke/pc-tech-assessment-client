@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let event of events">
-      <td>{{event.date}}</td>
-      <td>{{event.type}}</td>
-      <td>{{event.summary}}</td>
-      <td>{{event.size}}</td>
+    <tr *ngFor="let event of events" style="cursor: pointer;" (click)="details(event)">
+      <td>{{event.event_date}}</td>
+      <td>{{event.event_type}}</td>
+      <td>{{event.event_summary}}</td>
+      <td>{{event.event_size}}</td>
     </tr>
   </tbody>
 </table>

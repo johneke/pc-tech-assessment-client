@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="py-5">Event Viewer</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-ev-date-range-picker (rangeChange)="rangeChanged($event)"></app-ev-date-range-picker>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-ev-paginated-table [events]="events" (pageChange)="pageChanged($event)" (limitChange)="limitChanged($event)" (eventDetail)="eventDetailRequested($event)"></app-ev-paginated-table>
+    </div>
+  </div>
+</div>

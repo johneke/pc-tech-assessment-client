@@ -1,10 +1,13 @@
 <div class="row">
     <div class="col">
-      <app-ev-paged-data-table [events]="events.events"></app-ev-paged-data-table>
+      <app-ev-paged-data-table [events]="events.items" (eventDetail)="eventDetailRequested($event)"></app-ev-paged-data-table>
     </div>
 </div>
 <div class="row">
     <div class="col">
-      <app-ev-paged-data-control [page]="events.page" [limit]="events.limit" [totalPages]="events.totalPages"></app-ev-paged-data-control>
+      <app-ev-paged-data-control [page]="events.page + 1" [limit]="events.limit" [totalPages]="events.total_pages" (pageChange)="pageChanged($event)"></app-ev-paged-data-control>
+    </div>
+    <div class="col">
+      <app-ev-paged-data-size [size]="events.limit" (limitChange)="limitChanged($event)"></app-ev-paged-data-size>
     </div>
 </div>

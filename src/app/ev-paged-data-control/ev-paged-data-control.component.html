@@ -1,1 +1,1 @@
-<ngb-pagination class="d-flex justify-content-center" [(pageSize)]="limit" [(page)]="page" [(collectionSize)]="collectionSize"></ngb-pagination>
+<ngb-pagination class="d-flex justify-content-left" [(page)]="page" [(pageSize)]="limit" [(collectionSize)]="limit * totalPages" (pageChange)="pageChanged($event)"></ngb-pagination>
