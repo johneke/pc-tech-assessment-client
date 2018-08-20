@@ -20,3 +20,4 @@ See https://github.com/johneke/pc-tech-assessment-server for how to integrate th
 * Bootstrap https://getbootstrap.com
 * Ng Bootstrap https://ng-bootstrap.github.io
 * Font Awesome https://fontawesome.com/
+* SpinKit http://tobiasahlin.com/spinkit/
