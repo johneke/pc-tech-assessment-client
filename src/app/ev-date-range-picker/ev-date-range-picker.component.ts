@@ -1,57 +1,68 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 import { EvRange } from '../ev-data-event/ev-range';
 import { EvRangeMode } from '../ev-data-event/ev-range-mode';
 
 @Component({
-  selector: 'app-ev-date-range-picker',
-  templateUrl: './ev-date-range-picker.component.html',
-  styleUrls: ['./ev-date-range-picker.component.css']
+	selector: 'app-ev-date-range-picker',
+	templateUrl: './ev-date-range-picker.component.html',
+	styleUrls: ['./ev-date-range-picker.component.css']
 })
 export class EvDateRangePickerComponent implements OnInit {
-  static readonly DEBOUNCE_TIME_MS = 500;
+	static readonly DEBOUNCE_TIME_MS = 500;
 
-  private dateDebounceTimer: any;
-  private range: EvRange = new EvRange(new Date('2000 01 01'), 10, EvRangeMode.YEARS);
+	private dateDebounceTimer: any;
+	private invalidDate: string = '';
 
-  timeSpanMode: string = '' + this.range.timeSpanMode;
-  timeSpanNumber: number = this.range.timeSpanNumber;
+	private updatedRange: EvRange;
+	// date held separately from the updatedRange var
+	// needs special handling because it could be a string 
+	// or a Date
+	private startDate: any;
 
-  constructor() { }
+	constructor() { }
 
-  @Output() rangeChange: EventEmitter<EvRange> = new EventEmitter();
+	@Input() range: EvRange;
+	@Output() rangeChange: EventEmitter<EvRange> = new EventEmitter();
 
-  timeSpanModeChanged(event) {
-  	this.range.timeSpanMode = Number(this.timeSpanMode);
-  	this.rangeChange.emit(this.range);
-  }
+	timeSpanModeChanged(event) {
+		this.rangeChange.emit(this.updatedRange);
+	}
 
-  timeSpanNumberChanged(event) {
-  	this.range.timeSpanNumber = this.timeSpanNumber;
-  	this.rangeChange.emit(this.range);
-  }
+	timeSpanNumberChanged(event) {
+		this.rangeChange.emit(this.updatedRange);
+	}
 
-  dateChanged(event) {
-  	clearTimeout(this.dateDebounceTimer);
+	dateTyped(event) {
+		clearTimeout(this.dateDebounceTimer);
 
-  	this.dateDebounceTimer = setTimeout(() => {
-  		// this is nasty!
-  		if (event.year && event.month && event.day) {
-  			this.range.startDate = new Date(`${event.year} ${event.month} ${event.day}`);
-  			this.rangeChange.emit(this.range);
-  		} else {
-  			let date = new Date(event);
-  			if (!isNaN(date.getTime())) {
-  				this.range.startDate = date;
-  				this.rangeChange.emit(this.range);
-  			} else {
-  				// highlight red
-  			}
-  		}
-  	}, EvDateRangePickerComponent.DEBOUNCE_TIME_MS);
-  }
+		this.dateDebounceTimer = setTimeout(() => {
+			if (event && this.isNgbDate(event)) {
+				this.invalidDate = '';
+				
+				this.updatedRange.startDate = new Date(`${event.year} ${event.month} ${event.day}`);
+				this.rangeChange.emit(this.updatedRange);
+			} else {
+				// highlight red
+				this.invalidDate = 'border border-danger';
+			}
+		}, EvDateRangePickerComponent.DEBOUNCE_TIME_MS);
+	}
 
-  ngOnInit() {
-  }
+	dateSelected(event) {
+		this.invalidDate = '';
+				
+		this.updatedRange.startDate = new Date(`${event.year} ${event.month} ${event.day}`);
+		this.rangeChange.emit(this.updatedRange);
+	}
+
+	ngOnInit() {
+		this.updatedRange = this.range;
+		this.startDate = new NgbDate(this.range.startDate.getFullYear(), this.range.startDate.getMonth() + 1, this.range.startDate.getDate());
+	}
+
+	private isNgbDate(obj: any) {
+		return obj && obj.day && obj.month && obj.year;
+	}
 }

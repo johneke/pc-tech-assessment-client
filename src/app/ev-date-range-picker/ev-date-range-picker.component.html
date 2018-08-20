@@ -1,40 +1,49 @@
 <form>
-  <div class="form-group row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Start Date</label>
-    <div class="col-sm-10">
-        <div class="form-group">
-          <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [ngModel]="startDate" (ngModelChange)="dateChanged($event)" ngbDatepicker #d="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                <i class="fa fa-calendar-alt"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Time Span</label>
-    <div class="col-sm-10">
-        <div class="form-group">
-          <div class="input-group">
-            <input class="form-control" type="number" name="length" [(ngModel)]="timeSpanNumber" (change)="timeSpanNumberChanged($event)" min="1">
-            <div class="input-group-append">
-              <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="timeSpanMode" (change)="timeSpanModeChanged($event)">
-                <label ngbButtonLabel class="btn-secondary rounded-0">
-                  <input ngbButton type="radio" value="0"> Days
-                </label>
-                <label ngbButtonLabel class="btn-secondary">
-                  <input ngbButton type="radio" value="1"> Months
-                </label>
-                <label ngbButtonLabel class="btn-secondary">
-                  <input ngbButton type="radio" value="2"> Years
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
+	<div class="form-group row">
+		<label for="staticEmail" class="col-sm-2 col-form-label">Start Date</label>
+		<div class="col-sm-10">
+				<div class="form-group">
+					<div class="input-group">
+						<input 
+							name="dp"
+							class="form-control {{invalidDate}}" 
+							placeholder="yyyy-mm-dd" 
+							[(ngModel)]="startDate" 
+							ngbDatepicker 
+							(ngModelChange)="dateTyped($event)" 
+							(dateSelect)="dateSelected($event)" 
+							#d="ngbDatepicker">
+
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+								<i class="fa fa-calendar-alt"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">Time Span</label>
+		<div class="col-sm-10">
+				<div class="form-group">
+					<div class="input-group">
+						<input class="form-control" type="number" name="length" [(ngModel)]="updatedRange.timeSpanNumber" (change)="timeSpanNumberChanged($event)" min="1">
+						<div class="input-group-append">
+							<div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="updatedRange.timeSpanMode" (change)="timeSpanModeChanged($event)">
+								<label ngbButtonLabel class="btn-secondary rounded-0">
+									<input ngbButton type="radio" value="0"> Days
+								</label>
+								<label ngbButtonLabel class="btn-secondary">
+									<input ngbButton type="radio" value="1"> Months
+								</label>
+								<label ngbButtonLabel class="btn-secondary">
+									<input ngbButton type="radio" value="2"> Years
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
 </form>

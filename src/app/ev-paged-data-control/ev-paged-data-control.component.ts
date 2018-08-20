@@ -1,25 +1,25 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ev-paged-data-control',
-  templateUrl: './ev-paged-data-control.component.html',
-  styleUrls: ['./ev-paged-data-control.component.css']
+	selector: 'app-ev-paged-data-control',
+	templateUrl: './ev-paged-data-control.component.html',
+	styleUrls: ['./ev-paged-data-control.component.css']
 })
 export class EvPagedDataControlComponent implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  @Input() page: number;
-  @Input() limit: number;
-  @Input() totalPages: number;
+	@Input() page: number;
+	@Input() limit: number;
+	@Input() totalPages: number;
 
-  @Output() pageChange: EventEmitter<number> = new EventEmitter();
+	@Output() pageChange: EventEmitter<number> = new EventEmitter();
 
-  pageChanged(event: number) {
-    this.pageChange.emit(event);
-  }
+	pageChanged(event: number) {
+		this.pageChange.emit(event);
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }

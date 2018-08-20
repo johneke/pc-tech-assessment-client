@@ -1,5 +1,5 @@
 export enum EvRangeMode {
-  DAYS = 0,
-  MONTHS = 1,
-  YEARS = 2
+	DAYS = '0',
+	MONTHS = '1',
+	YEARS = '2'
 }

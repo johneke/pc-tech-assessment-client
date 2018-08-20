@@ -1,17 +1,33 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="py-5">Event Viewer</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-ev-date-range-picker (rangeChange)="rangeChanged($event)"></app-ev-date-range-picker>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-ev-paginated-table [events]="events" (pageChange)="pageChanged($event)" (limitChange)="limitChanged($event)" (eventDetail)="eventDetailRequested($event)"></app-ev-paginated-table>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col">
+			<h1 class="py-5">Event Viewer</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<app-ev-date-range-picker [range]="range" (rangeChange)="rangeChanged($event)"></app-ev-date-range-picker>
+		</div>
+	</div>
+	<div class="row" [hidden]="events.items.length === 0">
+		<div class="col">
+			<app-ev-paginated-table [events]="events" (pageChange)="pageChanged($event)" (limitChange)="limitChanged($event)" (eventDetail)="eventDetailRequested($event)"></app-ev-paginated-table>
+		</div>
+	</div>
+	<div class="row" [hidden]="events.items.length > 0">
+		<div class="col">
+			<h3>No events occured during the selected timeframe</h3>
+		</div>
+	</div>
+</div>
+<div class="loader" [hidden]="!loading">
+	<div class="loader-bg">
+	</div>
+	<div class="loader-fg">
+		<div class="sk-three-bounce">
+			<div class="sk-child sk-bounce1"></div>
+			<div class="sk-child sk-bounce2"></div>
+			<div class="sk-child sk-bounce3"></div>
+		</div>
+	</div>
 </div>

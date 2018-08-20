@@ -4,25 +4,29 @@ import { EvAllComponent } from './ev-all/ev-all.component';
 import { EvDetailComponent } from './ev-detail/ev-detail.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'events',
-    pathMatch: 'full'
-  },
-  {
-    path: 'events',
-    component: EvAllComponent
-  },
-  {
-    path: 'events/:id',
-    component: EvDetailComponent
-  }
+	{
+		path: '',
+		redirectTo: 'events',
+		pathMatch: 'full'
+	},
+	{
+		path: 'events',
+		component: EvAllComponent
+	},
+	{
+		path: 'events/:id',
+		component: EvDetailComponent
+	},
+	{
+		path: "**",
+		redirectTo: 'events'
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: []
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
+	providers: []
 })
 export class AppRoutingModule {
 }

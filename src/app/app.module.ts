@@ -19,24 +19,24 @@ import { EvDetailComponent } from './ev-detail/ev-detail.component';
 import { EvAllComponent } from './ev-all/ev-all.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EvDateRangePickerComponent,
-    EvPagedDataTableComponent,
-    EvPagedDataControlComponent,
-    EvPaginatedTableComponent,
-    EvPagedDataSizeComponent,
-    EvDetailComponent,
-    EvAllComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-    AppRoutingModule
-  ],
-  providers: [EvHttpClientService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		EvDateRangePickerComponent,
+		EvPagedDataTableComponent,
+		EvPagedDataControlComponent,
+		EvPaginatedTableComponent,
+		EvPagedDataSizeComponent,
+		EvDetailComponent,
+		EvAllComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		FormsModule,
+		NgbModule,
+		AppRoutingModule
+	],
+	providers: [EvHttpClientService],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
