@@ -14,3 +14,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 3. `ng build`
 
 See https://github.com/johneke/pc-tech-assessment-server for how to integrate this front end into the back end
+
+## Third Party Libraries
+
+* Bootstrap https://getbootstrap.com
+* Ng Bootstrap https://ng-bootstrap.github.io
+* Font Awesome https://fontawesome.com/
