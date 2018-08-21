@@ -13,8 +13,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. `cd /path/to/this/repo`
 3. `ng build`
 
-See https://github.com/johneke/pc-tech-assessment-server for how to integrate this front end into the back end
-
 ## Third Party Libraries
 
 * Bootstrap https://getbootstrap.com
