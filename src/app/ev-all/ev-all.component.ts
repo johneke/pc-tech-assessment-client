@@ -18,7 +18,7 @@ export class EvAllComponent {
 	static readonly DEFAULT_LIMIT: number = 25;
 	static readonly DEFAULT_START_DATE: Date = new Date('2010 01 01');
 	static readonly DEFAULT_TIMESPAN_NUMBER: number = 10;
-	static readonly DEFAULT_TIMESPAN_MODE: EvRangeMode = EvRangeMode.YEARS;
+	static readonly DEFAULT_TIMESPAN_MODE: EvRangeMode = EvRangeMode.QUARTERS;
 
 	private startDate: number;
 	private endDate: number;
@@ -94,16 +94,16 @@ export class EvAllComponent {
 		const DAYS_TO_MS = 86400000;
 
 		switch (range.timeSpanMode) {
-			case EvRangeMode.DAYS:
-				numDays = 1;
+			case EvRangeMode.WEEKS:
+				numDays = 7;
 				break;
 
 			case EvRangeMode.MONTHS:
 				numDays = 30;
 				break;
 
-			case EvRangeMode.YEARS:
-				numDays = 365;
+			case EvRangeMode.QUARTERS:
+				numDays = 60;
 				break;
 			
 			default:
