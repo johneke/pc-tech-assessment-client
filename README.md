@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Required Tools
 
 * Git
+* NPM (v 5.6.0+)
 * [Angular CLI](https://github.com/angular/angular-cli) (follow link for how to install angular cli (`ng`))
 
 ## Steps To Build
