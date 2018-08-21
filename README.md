@@ -11,7 +11,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Clone this repo
 2. `cd /path/where/repo/was/cloned`
-3. `ng build`
+3. `npm install`
+4. `ng build`
 
 ## Third Party Libraries
 
