@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Steps To Build
 
 1. Clone this repo
-2. `cd /path/to/this/repo`
+2. `cd /path/where/repo/was/cloned`
 3. `ng build`
 
 ## Third Party Libraries
